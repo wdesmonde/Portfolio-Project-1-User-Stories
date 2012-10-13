@@ -1,0 +1,11 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/Fixtures.html
+
+one:
+  as_a: MyString
+  i_want_to: MyText
+  so_that: MyText
+
+two:
+  as_a: MyString
+  i_want_to: MyText
+  so_that: MyText
