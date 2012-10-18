@@ -6,13 +6,8 @@
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
 
-# stuff_google_spreadsheet_data_into_database
-# set_all_initial_status_to_backlog
-    
-puts "Seed data goes here."
-
-def stuff_google_spreadsheet_data_into_database
-  puts "Stuffing Google goes here."
+def stuff_initial_story_data_into_database
+  Story.delete_all
   tales = [
     ["member of this team", "have a manageable list of portfolio projects", "we can manage our work and get some projects done", "Project #1"],
     ["user", "know a stories status (accepted, rejected, implemented, etc.) and the date the status changed", "TBD", "Feature of Project List Project (#1)"],
@@ -49,11 +44,7 @@ def stuff_google_spreadsheet_data_into_database
     ["ProMatch member with a computer problem", "use something like https://sites.google.com/site/pmnetworkingopportunities/home to not only find networking opportunities but to build small teams to meet before events, pump each other up, and network as a team", "I never have to do this scary thing alone", "Candidate Project"],
     ["ProMatch member", "use a web application that does what this (http://www.customresumetracking.com/) does to manage resumes", "I can make my job search easier", "Candidate Project"]
   ]
-  tales.each {|ns|
-    st = Story.new(as_a: ns[0], i_want_to: ns[1], so_that: ns[2], notes: ns[3], status: 'Backlog')
-    st.save!
-    puts st.inspect
-  }
+  tales.each {|ns| Story.new(as_a: ns[0], i_want_to: ns[1], so_that: ns[2], notes: ns[3], status: 'Backlog').save}
 end
 
-stuff_google_spreadsheet_data_into_database
+stuff_initial_story_data_into_database
