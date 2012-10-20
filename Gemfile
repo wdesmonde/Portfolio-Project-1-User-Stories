@@ -7,7 +7,7 @@ gem 'rails', '3.1.0'
 
 gem 'sqlite3'
 
-gem 'therubyracer'
+#gem 'therubyracer'
 gem 'execjs'
 
 
