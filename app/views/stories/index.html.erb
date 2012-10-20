@@ -1,30 +1,22 @@
-<h1>Listing stories</h1>
+<h1>In Progress</h1>
 
-<table>
-  <tr>
-    <th>ID</th>
-    <th>Status</th>
-    <th>As a</th>
-    <th>I want to</th>
-    <th>So that</th>
-    <th></th>
-    <th></th>
-    <th></th>
-  </tr>
+<%= render 'list', :stat => 'In Progress' %>
 
-<% @stories.each do |story| %>
-  <tr>
-    <td><%= story.id %></td>
-    <td><%= story.status %></td>
-    <td><%= story.as_a %></td>
-    <td><%= story.i_want_to %></td>
-    <td><%= story.so_that %></td>
-    <td><%= link_to 'Show', story %></td>
-    <td><%= link_to 'Edit', edit_story_path(story) %></td>
-    <td><%= link_to 'Destroy', story, confirm: 'Are you sure?', method: :delete %></td>
-  </tr>
-<% end %>
-</table>
+<h1>Not Started</h1>
+
+<%= render 'list', :stat => 'Not Started' %>
+
+<h1>Test</h1>
+
+<%= render 'list', :stat => 'Test' %>
+
+<h1>Backlog</h1>
+
+<%= render 'list', :stat => 'Backlog' %>
+
+<h1>Done</h1>
+
+<%= render 'list', :stat => 'Done' %>
 
 <br />
 

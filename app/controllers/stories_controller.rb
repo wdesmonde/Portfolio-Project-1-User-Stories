@@ -3,6 +3,11 @@ class StoriesController < ApplicationController
   # GET /stories.json
   def index
     @stories = Story.all
+    # in_progress = Story.where(:status => 'In Progress')
+    # @stories = Story.where(:status => 'Not Started')
+    # @stories = Story.where(:status => 'Test')
+    # @stories = Story.where(:status => 'Backlog')
+    # @stories = Story.where(:status => 'Done')
 
     respond_to do |format|
       format.html # index.html.erb
