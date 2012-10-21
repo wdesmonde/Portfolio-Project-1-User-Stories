@@ -47,4 +47,4 @@ def stuff_initial_story_data_into_database
   tales.each {|ns| Story.new(as_a: ns[0], i_want_to: ns[1], so_that: ns[2], notes: ns[3], status: 'Backlog').save}
 end
 
-stuff_initial_story_data_into_database
+# stuff_initial_story_data_into_database # Disabled so it doesn't get run in production twice
