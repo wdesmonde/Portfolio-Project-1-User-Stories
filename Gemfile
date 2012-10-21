@@ -15,7 +15,16 @@ group :production do
   gem 'pg'
 end
 
-gem 'therubyracer'
+# therubyracer provices a JavaScript container
+#    this is not needed for Windows
+# under Windows, run 
+#     bundle install --without not_windows
+# under Ubuntu, run
+#     bundle install
+group :not_windows do
+	gem 'therubyracer'
+end
+
 gem 'execjs'
 
 
