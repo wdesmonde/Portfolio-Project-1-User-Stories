@@ -1,5 +1,15 @@
 Pp1::Application.routes.draw do
+
   resources :stories
+  
+  resources :users
+  resources :sessions
+  
+  get "logout" => "sessions#destroy", :as => "logout"
+  get "login" => "sessions#new", :as => "login"
+  get "signup" => "users#new", :as => "signup"
+  
+  root :to => "stories#index"
 
   # The priority is based upon order of creation:
   # first created -> highest priority.

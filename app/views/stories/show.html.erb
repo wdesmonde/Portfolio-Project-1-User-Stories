@@ -11,6 +11,11 @@
 </p>
 
 <p>
+  <b>User:</b>
+  <%= User.find(@story.user_id).username %>
+</p>
+
+<p>
   <b>As a:</b>
   <%= @story.as_a %>
 </p>

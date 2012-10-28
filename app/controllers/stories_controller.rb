@@ -1,4 +1,6 @@
 class StoriesController < ApplicationController
+  before_filter :require_login, :only => [:edit, :new, :destroy]
+  
   # GET /stories
   # GET /stories.json
   def index
@@ -57,7 +59,7 @@ class StoriesController < ApplicationController
       end
     end
   end
-
+  
   # PUT /stories/1
   # PUT /stories/1.json
   def update
