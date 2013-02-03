@@ -20,7 +20,7 @@
       <td><%= story.as_a %></td>
       <td><%= story.i_want_to %></td>
       <td><%= story.so_that %></td>
-      <td><%= story.notes %><br/><%= raw story.tag_list.map { |t| link_to t, tag_path(t) }.join(', ') %></td>
+      <td><%= story.notes %></td>
       <td><%= User.find(story.user_id).username %></td>
       <td><%= link_to 'Show', story %></td>
       <td><%= link_to 'Edit', edit_story_path(story) %></td>
