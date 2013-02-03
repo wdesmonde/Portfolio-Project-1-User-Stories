@@ -1,7 +1,5 @@
 class Story < ActiveRecord::Base
   belongs_to :user
-  attr_accessible :tag_list
-  acts_as_taggable
   
   validates :status, :presence => true
   validates :as_a, :presence => true
