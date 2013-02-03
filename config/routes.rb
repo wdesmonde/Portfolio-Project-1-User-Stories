@@ -1,10 +1,11 @@
 Pp1::Application.routes.draw do
 
+  get 'tags/:tag', to: 'stories#index', as: :tag
+
   resources :stories
+  
   resources :users
   resources :sessions
-  
-  get 'tags/:tag', to: 'stories#index', as: :tag
   
   get "logout" => "sessions#destroy", :as => "logout"
   get "login" => "sessions#new", :as => "login"
