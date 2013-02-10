@@ -11,11 +11,6 @@
 </p>
 
 <p>
-  <b>Tags:</b>
-  <%= raw @story.tag_list.map { |t| link_to t, tag_path(t) }.join(', ') %>
-</p>
-
-<p>
   <b>User:</b>
   <%= User.find(@story.user_id).username %>
 </p>

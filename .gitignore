@@ -5,5 +5,5 @@ tmp/
 .sass-cache/
 *.komodoedit
 *.komodoproject
-
+Gemfile.lock
 
