@@ -13,9 +13,9 @@ gem 'pg'
 #     bundle install --without not_windows
 # under Ubuntu, run
 #     bundle install
-#group :not_windows do
-#	gem 'therubyracer'
-#end
+group :not_windows do
+   gem 'therubyracer'
+end
 
 gem 'execjs'
 
