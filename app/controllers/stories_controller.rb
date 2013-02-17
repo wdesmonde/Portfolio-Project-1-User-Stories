@@ -32,7 +32,7 @@ class StoriesController < ApplicationController
   # GET /stories/new.json
   def new
     @story = Story.new
-    @story.user_id = current_user
+    @story.user_id = current_user.id
 
     respond_to do |format|
       format.html # new.html.erb
