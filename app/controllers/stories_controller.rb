@@ -3,8 +3,12 @@ class StoriesController < ApplicationController
   
   # GET /stories
   # GET /stories.json
-  def index
-    @stories = Story.all
+  def index	
+    if params[:tag]
+      @stories = Story.tagged_with(params[:tag])
+    else
+      @stories = Story.all
+    end
     # in_progress = Story.where(:status => 'In Progress')
     # @stories = Story.where(:status => 'Not Started')
     # @stories = Story.where(:status => 'Test')

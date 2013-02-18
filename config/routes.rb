@@ -1,5 +1,7 @@
 Pp1::Application.routes.draw do
 
+  get 'tags/:tag', to: 'stories#index', as: :tag
+
   resources :stories
   
   resources :users
