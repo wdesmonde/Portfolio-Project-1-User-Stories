@@ -11,6 +11,11 @@
 </p>
 
 <p>
+  <b>Tags:</b>
+   <%= @story.tags.map(&:name).map { |t| t.inspect }.join(', ') %>
+</p>
+
+<p>
   <b>User:</b>
   <%= User.find(@story.user_id).username %>
 </p>

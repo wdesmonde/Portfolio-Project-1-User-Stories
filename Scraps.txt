@@ -1,0 +1,44 @@
+Scraps
+
+
+we took this out of show.html.erb
+ <!-- <%= raw @story.tag_list.map { |t| link_to t, tag_path(t) }.join(', ') %> -->
+ <!-- <%= raw @story.tags.map(&:name).map { |t| link_to t, tag_path(t) }.join(', ') %> -->
+
+
+ pulled from index.html.erb
+ -- tag cloud stuff --
+   <!--
+  We want to get all the tags in Pp_1
+  in this div.
+  We want them to be sorted in some order
+  We need to count them
+  express as a comma-separated list
+  the count will determine the size (via css)
+  we want a link under each tag wich will return a list of all stories with that tag
+-->
+
+<!--
+  <% tag_cloud Story.tag_counts, %w{s m l} do |tag, css_class| %>
+    <%= link_to tag.name, tag_path(tag.name), class: css_class %>
+  <% end %>
+  -->
+  <!--
+  <% Story.tag_list Story.tag_counts, %w{s m l} do |tag, css_class| %>
+    <%= link_to tag.name, tag_path(tag.name), class: css_class %>
+  <% end %>
+  
+  <% tag_cloud Story.tag_counts, %w{s m l} do |tag, css_class| %>
+    <%= link_to tag.name, tag_path(tag.name), class: css_class %>
+  <% end %>
+  
+  <%= raw story.tags.map(&:name).map { |t| link_to t, tag_path(t) }.join(', ') %>
+  -->
+
+
+from _list.html.erb
+>
+      <td><%= story.notes %><br/><%= raw story.tag_list.map { |t| link_to t, tag_path(t) }.join(', ') %></td>
+
+      
+

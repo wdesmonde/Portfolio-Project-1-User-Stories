@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20121028185450) do
+ActiveRecord::Schema.define(:version => 20130217224723) do
 
   create_table "stories", :force => true do |t|
     t.string   "as_a"
@@ -22,6 +22,22 @@ ActiveRecord::Schema.define(:version => 20121028185450) do
     t.text     "notes"
     t.string   "status"
     t.integer  "user_id"
+  end
+
+  create_table "taggings", :force => true do |t|
+    t.integer  "tag_id"
+    t.integer  "story_id"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
+  add_index "taggings", ["story_id"], :name => "index_taggings_on_story_id"
+  add_index "taggings", ["tag_id"], :name => "index_taggings_on_tag_id"
+
+  create_table "tags", :force => true do |t|
+    t.string   "name"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
   end
 
   create_table "users", :force => true do |t|
