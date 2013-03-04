@@ -40,5 +40,12 @@ from _list.html.erb
 >
       <td><%= story.notes %><br/><%= raw story.tag_list.map { |t| link_to t, tag_path(t) }.join(', ') %></td>
 
-      
+from _list.html.erb, code did not display tags or links
+>
+
+          <% story.tag_list do |tag| %>
+            <%= tag.inspect %>
+            <%= raw link_to tag, tag_path(tag.name) %>
+            <% end %>
+
 
