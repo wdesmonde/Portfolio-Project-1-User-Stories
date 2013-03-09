@@ -1,0 +1,28 @@
+%p#notice= notice
+%p
+  %b ID:
+  = @story.id
+%p
+  %b Status:
+  = @story.status
+%p
+  %b Tags:
+  = raw @story.tags.map { |t| link_to t.name, tag_path(t.name) }.join(', ')
+%p
+  %b User:
+  = User.find(@story.user_id).username
+%p
+  %b As a:
+  = @story.as_a
+%p
+  %b I want to:
+  = @story.i_want_to
+%p
+  %b So that:
+  = @story.so_that
+%p
+  %b Notes:
+  = @story.notes
+= link_to 'Edit', edit_story_path(@story)
+|
+\#{link_to 'Back', stories_path}

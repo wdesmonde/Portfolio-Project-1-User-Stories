@@ -30,6 +30,14 @@ group :assets do
 end
 
 gem 'jquery-rails'
+gem 'haml-rails'
+
+group :development do
+  gem 'hpricot'
+  gem 'ruby_parser'
+  gem 'html2haml'
+end
+
 
 # Use unicorn as the web server
 # gem 'unicorn'

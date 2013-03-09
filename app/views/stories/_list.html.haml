@@ -1,0 +1,30 @@
+%table
+  %tr
+    %th ID
+    %th Status
+    %th As a
+    %th I want to
+    %th So that
+    %th Notes
+    %th User
+    %th
+    %th
+    %th
+  - @stories.each do |story|
+    - if (story.status == stat)
+      %tr
+        %td= story.id
+        %td= story.status
+        %td= story.as_a
+        %td= story.i_want_to
+        %td= story.so_that
+        %td
+          = story.notes
+          %br/
+          %strong
+            %p
+              Tags: #{raw story.tags.map { |t| link_to t.name, tag_path(t.name) }.join(', ')}
+        %td= User.find(story.user_id).username
+        %td= link_to 'Show', story
+        %td= link_to 'Edit', edit_story_path(story)
+        %td= link_to 'Destroy', story, confirm: 'Are you sure?', method: :delete
