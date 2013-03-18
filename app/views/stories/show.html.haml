@@ -1,3 +1,4 @@
+= render 'single_story_nav'
 %p#notice= notice
 %p
   %b ID:
@@ -23,6 +24,4 @@
 %p
   %b Notes:
   = @story.notes
-= link_to 'Edit', edit_story_path(@story)
-|
-\#{link_to 'Back', stories_path}
+= render 'single_story_nav'

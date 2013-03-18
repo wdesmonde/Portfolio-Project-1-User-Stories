@@ -1,0 +1,11 @@
+%ul.single_story_nav.button
+  %li
+    = link_to 'Back to All Stories', stories_path
+  %li
+    = link_to 'New Story', new_story_path
+  %li.edit_page_only
+    = link_to 'Show', @story
+  %li.show_page_only
+    = link_to 'Edit', edit_story_path(@story)
+  %li.show_page_only
+    = link_to 'Destroy', @story, confirm: 'Are you sure?', method: :delete

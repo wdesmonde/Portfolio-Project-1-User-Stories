@@ -1,5 +1,6 @@
 %h1 User Stories
-= link_to 'New Story', new_story_path
+.button_panel.button
+  = link_to 'New Story', new_story_path
 #tag_cloud
   - tag_cloud Story.tag_counts, %w{s m l} do |tag, css_class|
     = link_to tag.name, tag_path(tag.name), class: css_class
@@ -14,4 +15,5 @@
 %h2 Done
 = render 'list', :stat => 'Done'
 %br/
-= link_to 'New Story', new_story_path
+.button
+  = link_to 'New Story', new_story_path

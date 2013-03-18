@@ -1,0 +1,51 @@
+/*
+ * This is a manifest file that'll automatically include all the stylesheets available in this directory
+ * and any sub-directories. You're free to add application-wide styles to this file and they'll appear at
+ * the top of the compiled file, but it's generally better to create a new file per style scope.
+ *= require_self
+ *= require_tree .
+
+table
+  border: 1px black solid
+  margin: 0px
+  th
+    border: 1px black solid
+    margin: 0px
+    text-align: center
+    font: bold
+  td
+    border: 1px black solid
+    margin: 0px
+
+#tag_cloud
+  .s
+    font-size: 0.8em
+  .m
+    font-size: 1.2em
+  .l
+    font-size: 1.8em
+  width: 400px
+  line-height: 2.0em
+
+textarea
+  height: 50px
+
+$button_color: lightblue
+$border_radius: 5px
+
+.button
+  padding: 20px
+
+.button a 
+  height: 10px
+  border: $border_radius solid darken($button_color, 40%)
+  -webkit-border-radius: $border_radius
+  -moz-border-radius: $border_radius
+  border-radius: $border_radius
+  margin-top: $border_radius
+  padding: .5em
+  text-decoration: none
+  color: darkblue
+  background-color: $button_color
+
+
