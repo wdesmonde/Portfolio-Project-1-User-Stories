@@ -29,3 +29,23 @@ table
 
 textarea
   height: 50px
+
+$button_color: lightblue
+$border_radius: 5px
+
+.button
+  padding: 20px
+
+.button a 
+  height: 10px
+  border: $border_radius solid darken($button_color, 40%)
+  -webkit-border-radius: $border_radius
+  -moz-border-radius: $border_radius
+  border-radius: $border_radius
+  margin-top: $border_radius
+  padding: .5em
+  text-decoration: none
+  color: darkblue
+  background-color: $button_color
+
+
