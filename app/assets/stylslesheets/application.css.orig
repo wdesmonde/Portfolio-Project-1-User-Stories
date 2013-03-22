@@ -42,6 +42,8 @@ textarea {
   text-decoration: none;
   color: darkblue;
   background-color: lightblue; }
+<<<<<<< HEAD
+=======
 
 .less {
   font-size: 80%; }
@@ -55,3 +57,4 @@ li a:hover {
   font-weight: bold;
   color: black;
   background-color: white; }
+>>>>>>> more_sassy_formatting

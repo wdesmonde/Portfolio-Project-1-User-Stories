@@ -3,6 +3,20 @@
     - if (story.status == stat)
       - story_desc = "As a #{story.as_a}, I want to #{story.i_want_to} so that #{story.so_that}."
       %li
-        = link_to story_desc, story
+        = link_to (story) do
+          %span.less
+            ='As a   '
+          %span.more
+            = story.as_a
+          %span.less
+            =',   I want to   '
+          %span.more
+            = story.i_want_to
+          %span.less
+            ='   so that   '
+          %span.more
+            = story.so_that
+
+
       
 
