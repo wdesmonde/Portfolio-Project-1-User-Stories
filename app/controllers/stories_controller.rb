@@ -1,5 +1,5 @@
 class StoriesController < ApplicationController
-  before_filter :require_login, :only => [:edit, :new, :destroy]
+  before_filter :require_login
   
   # GET /stories
   # GET /stories.json
@@ -79,6 +79,10 @@ class StoriesController < ApplicationController
         format.json { render json: @story.errors, status: :unprocessable_entity }
       end
     end
+  end
+
+  def multiEdit
+    
   end
 
   # DELETE /stories/1
