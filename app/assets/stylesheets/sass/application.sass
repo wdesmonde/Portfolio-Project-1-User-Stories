@@ -5,6 +5,41 @@
  *= require_self
  *= require_tree .
 
+$selectedFontSize: 120%
+$headerBkgrdColor: #4876ff
+$siteMainBkgrdColor: white
+$bkgrdColor: #cae1ff
+$oddBkgrdColor: darken($bkgrdColor, 10%)
+$button_color: lightblue
+$border_radius: 5px
+
+
+body
+  background-color: $headerBkgrdColor
+
+header
+  //background-color: $headerBkgrdColor
+  padding: 25px
+
+footer
+  //background-color: $headerBkgrdColor
+  padding: 25px
+
+.site_title
+  font-weight: bold
+  font-size: 150%
+  margin-left: 50px
+
+.user_nav
+  float: right
+  margin-right: 40px
+
+#container
+  margin-left: 50px
+  margin-right: 50px
+  background-color: $siteMainBkgrdColor
+  padding: 20px
+
 table
   border: 1px black solid
   margin: 0px
@@ -20,18 +55,21 @@ table
 #tag_cloud
   .s
     font-size: 0.8em
+    color: $siteMainBkgrdColor
   .m
     font-size: 1.2em
+    color: $siteMainBkgrdColor
   .l
     font-size: 1.8em
-  width: 400px
+    color: $siteMainBkgrdColor
+  width: 100%
   line-height: 2.0em
+  background-color: darken($headerBkgrdColor,30%)
+  
 
 textarea
   height: 50px
 
-$button_color: lightblue
-$border_radius: 5px
 
 .button
   padding: 20px
@@ -49,15 +87,39 @@ $border_radius: 5px
   background-color: $button_color
 
 .less
-  font-size: 80%
+  font-size: 100%
   
 .more
-  font-size: 120%
+  font-size: 100%
   
-li a:hover
-  line-height: 120%
-  font-size: 120%
-  font-weight: bold
-  color: black
-  background-color: white
+li
+  background-color: $bkgrdColor
+  list-style-type: none
+  text-indent: -1.8em
 
+li a
+  text-decoration: none
+
+li:hover
+  //line-height: $selectedFontSize
+  //font-size: $selectedFontSize
+  //font-weight: bold
+  color: black
+  background-color: $siteMainBkgrdColor
+
+
+li:nth-child(odd)
+  background-color: $oddBkgrdColor
+  &:hover
+    background-color: $siteMainBkgrdColor
+
+.single_story_nav
+  padding: 20px
+
+.single_story_nav li
+  display: inline
+  list-style-type: none
+  padding: 0
+  margin: 0
+  background-color: $siteMainBkgrdColor
+ 

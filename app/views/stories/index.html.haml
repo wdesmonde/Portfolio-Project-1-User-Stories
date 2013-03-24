@@ -4,16 +4,19 @@
 #tag_cloud
   - tag_cloud Story.tag_counts, %w{s m l} do |tag, css_class|
     = link_to tag.name, tag_path(tag.name), class: css_class
-%h2 In Progress
-= render 'list', :stat => 'In Progress'
-%h2 Not Started
-= render 'list', :stat => 'Not Started'
-%h2 Test
-= render 'list', :stat => 'Test'
-%h2 Backlog
-= render 'list', :stat => 'Backlog'
-%h2 Done
-= render 'list', :stat => 'Done'
-%br/
+= form_tag stories_multiedit_path do
+  %h2 In Progress
+  = render 'list', :stat => 'In Progress'
+  %h2 Not Started
+  = render 'list', :stat => 'Not Started'
+  %h2 Test
+  = render 'list', :stat => 'Test'
+  %h2 Backlog
+  = render 'list', :stat => 'Backlog'
+  %h2 Done
+  = render 'list', :stat => 'Done'
+  %br/
+  .actions
+    = submit_tag 'Select Stories'
 .button
   = link_to 'New Story', new_story_path

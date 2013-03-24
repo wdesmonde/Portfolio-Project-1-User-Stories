@@ -3,6 +3,30 @@
  * the top of the compiled file, but it's generally better to create a new file per style scope.
  *= require_self
  *= require_tree . */
+body {
+  background-color: #4876ff; }
+
+header {
+  padding: 25px; }
+
+footer {
+  padding: 25px; }
+
+.site_title {
+  font-weight: bold;
+  font-size: 150%;
+  margin-left: 50px; }
+
+.user_nav {
+  float: right;
+  margin-right: 40px; }
+
+#container {
+  margin-left: 50px;
+  margin-right: 50px;
+  background-color: white;
+  padding: 20px; }
+
 table {
   border: 1px black solid;
   margin: 0px; }
@@ -16,14 +40,18 @@ table {
     margin: 0px; }
 
 #tag_cloud {
-  width: 400px;
-  line-height: 2em; }
+  width: 100%;
+  line-height: 2em;
+  background-color: #002cae; }
   #tag_cloud .s {
-    font-size: 0.8em; }
+    font-size: 0.8em;
+    color: white; }
   #tag_cloud .m {
-    font-size: 1.2em; }
+    font-size: 1.2em;
+    color: white; }
   #tag_cloud .l {
-    font-size: 1.8em; }
+    font-size: 1.8em;
+    color: white; }
 
 textarea {
   height: 50px; }
@@ -42,3 +70,36 @@ textarea {
   text-decoration: none;
   color: darkblue;
   background-color: lightblue; }
+
+.less {
+  font-size: 100%; }
+
+.more {
+  font-size: 100%; }
+
+li {
+  background-color: #cae1ff;
+  list-style-type: none;
+  text-indent: -1.8em; }
+
+li a {
+  text-decoration: none; }
+
+li:hover {
+  color: black;
+  background-color: white; }
+
+li:nth-child(odd) {
+  background-color: #97c4ff; }
+  li:nth-child(odd):hover {
+    background-color: white; }
+
+.single_story_nav {
+  padding: 20px; }
+
+.single_story_nav li {
+  display: inline;
+  list-style-type: none;
+  padding: 0;
+  margin: 0;
+  background-color: white; }
