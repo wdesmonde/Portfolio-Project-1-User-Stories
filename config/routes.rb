@@ -10,6 +10,8 @@ Pp1::Application.routes.draw do
   get "logout" => "sessions#destroy", :as => "logout"
   get "login" => "sessions#new", :as => "login"
   get "signup" => "users#new", :as => "signup"
+  get "multiselect" => "stories#multiselect", :as => "multiselect"
+  post "multiselect" => "stories#multiselect/:selected", :as => "multiselect"
   
   root :to => "stories#index"
 

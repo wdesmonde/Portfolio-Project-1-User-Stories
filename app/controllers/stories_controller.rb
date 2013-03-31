@@ -85,6 +85,28 @@ class StoriesController < ApplicationController
     
   end
 
+  def multiselect
+    puts "***************HELLO WORLD*********************"
+    puts params.inspect
+    @debug.append
+    if params[:selected]
+      @stories = Story.find([2,49])
+    else
+      @stories = Story.find([5,10])
+    end
+
+    # in_progress = Story.where(:status => 'In Progress')
+    # @stories = Story.where(:status => 'Not Started')
+    # @stories = Story.where(:status => 'Test')
+    # @stories = Story.where(:status => 'Backlog')
+    # @stories = Story.where(:status => 'Done')
+
+    respond_to do |format|
+      format.html # index.html.erb
+      format.json { render json: @stories }
+    end
+  end
+
   # DELETE /stories/1
   # DELETE /stories/1.json
   def destroy
