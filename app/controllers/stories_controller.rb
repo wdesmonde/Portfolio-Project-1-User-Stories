@@ -6,6 +6,9 @@ class StoriesController < ApplicationController
   def index	
     if params[:tag]
       @stories = Story.tagged_with(params[:tag])
+    elsif params[:sels]
+      puts "****SELS********"
+     # @stories = Story.find([2,49])
     else
       @stories = Story.all
     end
@@ -81,6 +84,14 @@ class StoriesController < ApplicationController
     end
   end
 
+  def edit_multiple
+    
+  end
+  
+  def update_multiple
+   
+  end
+
   def multiEdit
     
   end
@@ -88,9 +99,11 @@ class StoriesController < ApplicationController
   def multiselect
     puts "***************HELLO WORLD*********************"
     puts params.inspect
-    @debug.append
-    if params[:selected]
-      @stories = Story.find([2,49])
+    
+    if params[:sels_]
+      values = params[:sels_]
+      @stories = Story.find(values)
+      #@stories = Story.find([2,49])
     else
       @stories = Story.find([5,10])
     end
