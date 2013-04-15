@@ -6,9 +6,6 @@ class StoriesController < ApplicationController
   def index	
     if params[:tag]
       @stories = Story.tagged_with(params[:tag])
-    elsif params[:sels]
-      puts "****SELS********"
-     # @stories = Story.find([2,49])
     else
       @stories = Story.all
     end
@@ -85,40 +82,22 @@ class StoriesController < ApplicationController
   end
 
   def edit_multiple
-    
+    @stories = Story.find(params[:story_ids])
   end
   
   def update_multiple
-   
-  end
-
-  def multiEdit
-    
-  end
-
-  def multiselect
-    puts "***************HELLO WORLD*********************"
-    puts params.inspect
-    
-    if params[:sels_]
-      values = params[:sels_]
-      @stories = Story.find(values)
-      #@stories = Story.find([2,49])
+    @stories = Story.find(params[:story_ids])
+    @stories.reject! do |story|
+      story.update_attributes(params[:story].reject { |k,v| v.blank? })
+    end
+    if @stories.empty?
+      render "edit_multiple"
     else
-      @stories = Story.find([5,10])
-    end
-
-    # in_progress = Story.where(:status => 'In Progress')
-    # @stories = Story.where(:status => 'Not Started')
-    # @stories = Story.where(:status => 'Test')
-    # @stories = Story.where(:status => 'Backlog')
-    # @stories = Story.where(:status => 'Done')
-
-    respond_to do |format|
-      format.html # index.html.erb
-      format.json { render json: @stories }
+      render "edit_multiple"
     end
   end
+
+  
 
   # DELETE /stories/1
   # DELETE /stories/1.json

@@ -15,10 +15,6 @@ Pp1::Application.routes.draw do
   get "logout" => "sessions#destroy", :as => "logout"
   get "login" => "sessions#new", :as => "login"
   get "signup" => "users#new", :as => "signup"
-  get "multiselect" => "stories#multiselect"
-  #get "multiselect" => "stories#multiselect/:sels", :as => "multiselect"
-  #post "multiselect" => "stories#multiselect/:sels", :as => "multiselect"
-  ### we’re adding methods that will work on a collection of products we’ll use the :collection option to add our two new actions.
   
   root :to => "stories#index"
 

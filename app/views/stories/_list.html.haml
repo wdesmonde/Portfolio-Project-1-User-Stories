@@ -1,7 +1,7 @@
 // this is _list.html.haml
-%form_tag edit_multiple_stories do
+= form_tag edit_multiple_stories_path, method: :post do
   %ul
-    - for story in @stories
+    - @stories.each do |story|
       - story_desc = "As a #{story.as_a}, I want to #{story.i_want_to} so that #{story.so_that}."
       - story_link = link_to story_desc, story
       - if (story.status == stat)
