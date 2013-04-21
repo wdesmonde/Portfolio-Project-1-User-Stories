@@ -10,19 +10,19 @@
       %br/
       = f.select :status, options_for_select(["Backlog","Not Started","In Progress", "Test", "Done"]), include_blank: true
   .actions
-    = submit_tag "Update All These Stories"
+    = submit_tag "Update All These Stories", class: 'button'
 
 
 %h2 In Progress
-= render 'list', :stat => 'In Progress'
+= render 'list', :stat => 'In Progress', :checkbox => false
 %h2 Not Started
-= render 'list', :stat => 'Not Started'
+= render 'list', :stat => 'Not Started', :checkbox => false
 %h2 Test
-= render 'list', :stat => 'Test'
+= render 'list', :stat => 'Test', :checkbox => false
 %h2 Backlog
-= render 'list', :stat => 'Backlog'
+= render 'list', :stat => 'Backlog', :checkbox => false
 %h2 Done
-= render 'list', :stat => 'Done'
+= render 'list', :stat => 'Done', :checkbox => false
 %br/
 
 
