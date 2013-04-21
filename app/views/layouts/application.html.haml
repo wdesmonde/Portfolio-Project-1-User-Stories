@@ -8,6 +8,7 @@
 
   %body{:class => params[:controller]}
     %header
+      = link_to 'Back to All Stories', stories_path
       .user_nav
         - if current_user
           Logged in as #{current_user.email}.
@@ -22,4 +23,6 @@
       - flash.each do |name, msg|
         = content_tag :div, msg, :id => "flash_#{name}"
       = yield
-    %footer version 7.2.2
+    %footer version 7.6
+    = link_to 'Back to All Stories', stories_path
+    = debug(params) if Rails.env.development?

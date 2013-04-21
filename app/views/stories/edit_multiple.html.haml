@@ -1,0 +1,31 @@
+%h1
+  Selected User Stories
+
+= form_tag update_multiple_stories_path, method: :put do
+  - @stories.each do |story|
+    = hidden_field_tag "story_ids[]", story.id
+  = fields_for :story do |f|
+    .field
+      = f.label :status
+      %br/
+      = f.select :status, options_for_select(["Backlog","Not Started","In Progress", "Test", "Done"]), include_blank: true
+  .actions
+    = submit_tag "Update All These Stories", class: 'button'
+
+
+%h2 In Progress
+= render 'list', :stat => 'In Progress', :checkbox => false
+%h2 Not Started
+= render 'list', :stat => 'Not Started', :checkbox => false
+%h2 Test
+= render 'list', :stat => 'Test', :checkbox => false
+%h2 Backlog
+= render 'list', :stat => 'Backlog', :checkbox => false
+%h2 Done
+= render 'list', :stat => 'Done', :checkbox => false
+%br/
+
+
+
+.button
+  = link_to 'Back to All Stories', stories_path

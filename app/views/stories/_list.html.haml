@@ -1,24 +1,17 @@
+// this is _list.html.haml
+//= form_tag edit_multiple_stories_path, method: :post do
 %ul
   - @stories.each do |story|
+    - story_desc = "As a #{story.as_a}, I want to #{story.i_want_to} so that #{story.so_that}."
+    - story_link = link_to story_desc, story
     - if (story.status == stat)
-      - story_desc = "As a #{story.as_a}, I want to #{story.i_want_to} so that #{story.so_that}."
       %li
-        = check_box_tag :selected
-
-        = link_to (story) do
-          %span.less
-            ='As a '
-          %span.more
-            = story.as_a
-          %span.less
-            =', I want to '
-          %span.more
-            = story.i_want_to
-          %span.less
-            =' so that '
-          %span.more
-            = story.so_that
+        - if (checkbox == true)
+          = check_box_tag "story_ids[]", story.id
+        = story_link
+//  = submit_tag "Edit Checked"
 
 
-      
-
+// = check_box_tag "selected[#{story.id}]", story.id
+// resulting HTML
+//<input id="selected_10" type="checkbox" value="10" name="selected[10]">

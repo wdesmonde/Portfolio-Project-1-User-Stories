@@ -81,9 +81,23 @@ class StoriesController < ApplicationController
     end
   end
 
-  def multiEdit
-    
+  def edit_multiple
+    @stories = Story.find(params[:story_ids])
   end
+  
+  def update_multiple
+    @stories = Story.find(params[:story_ids])
+    @stories.reject! do |story|
+      story.update_attributes(params[:story].reject { |k,v| v.blank? })
+    end
+    if @stories.empty?
+      render "edit_multiple"
+    else
+      render "edit_multiple"
+    end
+  end
+
+  
 
   # DELETE /stories/1
   # DELETE /stories/1.json
