@@ -1,5 +1,6 @@
 %h1 User Stories
-.button_panel.button
+//.button_panel.button
+.button
   = link_to 'New Story', new_story_path
 #tag_cloud
   - tag_cloud Story.tag_counts, %w{s m l} do |tag, css_class|
@@ -7,25 +8,23 @@
 = form_tag edit_multiple_stories_path, method: :post do
   %h2 In Progress
   = render 'list', :stat => 'In Progress', :checkbox => true
-  .button_panel
-    = submit_tag "Edit Checked", class: 'button'
+  = submit_tag "Edit Checked", class: 'submit_button'
   %h2 Not Started
   = render 'list', :stat => 'Not Started', :checkbox => true
   %br/
-  .button_panel
-    = submit_tag "Edit Checked", :class => 'button'
+  = submit_tag "Edit Checked", :class => 'submit_button'
   %h2 Test
   = render 'list', :stat => 'Test', :checkbox => true
   %br/
-  = submit_tag "Edit Checked", class: 'button'
+  = submit_tag "Edit Checked", class: 'submit_button'
   %h2 Backlog
   = render 'list', :stat => 'Backlog', :checkbox => true
   %br/
-  = submit_tag "Edit Checked", :class => 'button'
+  = submit_tag "Edit Checked", :class => 'submit_button'
   %h2 Done
   = render 'list', :stat => 'Done', :checkbox => true
   %br/
-  = submit_tag "Edit Checked", class: 'button'
+  = submit_tag "Edit Checked", class: 'submit_button'
 
 .button
   = link_to 'New Story', new_story_path

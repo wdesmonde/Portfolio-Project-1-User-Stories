@@ -2,6 +2,7 @@ class Story < ActiveRecord::Base
   belongs_to :user
   has_many :taggings
   has_many :tags, :through => :taggings
+  attr_writer :tags_to_add, :tags_to_remove
   
   validates :status, :presence => true
   validates :as_a, :presence => true
@@ -42,4 +43,20 @@ class Story < ActiveRecord::Base
       Tag.where(name: n.strip).first_or_create!
     end
   end
+
+  # add tags
+  def tags_to_add=(names)
+    self.tags << names.split(",").map do |n|
+      Tag.where(name: n.strip).first_or_create!
+    end
+  end
+
+  # remove a tag
+  def tags_to_remove=(names)
+    names.split(",").map do |n|
+      self.tags.delete Tag.where(name: n.strip)
+#      Tag.where(name: n.strip).first
+    end
+  end
+
 end
