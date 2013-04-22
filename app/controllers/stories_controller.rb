@@ -82,16 +82,23 @@ class StoriesController < ApplicationController
   end
 
   def edit_multiple
-    @stories = Story.find(params[:story_ids])
+    if params[:story_ids]
+      @stories = Story.find(params[:story_ids])
+      @users = User.all
+    else
+      redirect_to :stories
+    end
   end
   
   def update_multiple
     @stories = Story.find(params[:story_ids])
+    @tags_to_add = params[:tags_to_add]
+    @tags_to_remove = params[:tags_to_remove]
     @stories.reject! do |story|
       story.update_attributes(params[:story].reject { |k,v| v.blank? })
     end
     if @stories.empty?
-      render "edit_multiple"
+      redirect_to :stories
     else
       render "edit_multiple"
     end

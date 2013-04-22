@@ -9,8 +9,20 @@
       = f.label :status
       %br/
       = f.select :status, options_for_select(["Backlog","Not Started","In Progress", "Test", "Done"]), include_blank: true
-  .actions
-    = submit_tag "Update All These Stories", class: 'button'
+    .field
+      = f.label :tags_to_remove, "Tags to Remove (separated by commas)"
+      %br/
+      = f.text_field :tags_to_remove
+    .field
+      = f.label :tags_to_add, "Tags to Add (separated by commas)"
+      %br/
+      = f.text_field :tags_to_add      
+    .field
+      = f.label :user_id
+      %br/
+      = f.select :user_id, options_from_collection_for_select(@users, :id, :username), include_blank: true
+    .actions
+      = submit_tag "Update All These Stories", class: 'submit_button'
 
 
 %h2 In Progress
