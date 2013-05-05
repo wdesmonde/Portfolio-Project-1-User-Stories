@@ -9,6 +9,16 @@
         - if (checkbox == true)
           = check_box_tag "story_ids[]", story.id
         = story_link
+        = "Tags: "
+        - firstTag = true
+        - story.tags.map.each do |t|
+          - if firstTag == true
+            - firstTag = false
+          - else
+            = ", "
+          = link_to t.name, tag_path(t.name)
+//        = "Tags: #{raw story.tags.map { |t| link_to t.
+//           name, tag_path(t.name) }.join(', ')}"
 //  = submit_tag "Edit Checked"
 
 
