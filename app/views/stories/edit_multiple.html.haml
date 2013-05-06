@@ -10,6 +10,10 @@
       %br/
       = f.select :status, options_for_select(["Backlog","Not Started","In Progress", "Test", "Done"]), include_blank: true
     .field
+      = f.label :priority
+      %br/
+      = f.select :priority, options_for_select(["High", "Medium", "Low"]), include_blank: true  
+    .field
       = f.label :tags_to_remove, "Tags to Remove (separated by commas)"
       %br/
       = f.text_field :tags_to_remove

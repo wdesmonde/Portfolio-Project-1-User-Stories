@@ -12,6 +12,10 @@
     %br/
     = f.select :status, options_for_select(["Backlog","Not Started","In Progress", "Test", "Done"],[@story.status])
   .field
+    = f.label :priority
+    %br/
+    = f.select :priority, options_for_select(["High", "Medium", "Low"],[options_default(@story.priority, "Medium")]) 
+  .field
     = f.label :tag_list, "Tags (separated by commas)"
     %br/
     = f.text_field :tag_list
