@@ -9,9 +9,10 @@
         - if (checkbox == true)
           = check_box_tag "story_ids[]", story.id
         = story_link
-//  = submit_tag "Edit Checked"
-
-
-// = check_box_tag "selected[#{story.id}]", story.id
-// resulting HTML
-//<input id="selected_10" type="checkbox" value="10" name="selected[10]">
+        .emphasis
+          = "Story #"
+        = story.id
+        .emphasis
+          = " Tags: "
+        .links
+          = raw tag_link_list story

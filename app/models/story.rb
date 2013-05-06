@@ -15,22 +15,15 @@ class Story < ActiveRecord::Base
     Tag.find_by_name!(name).stories
   end
 
-  # returns a list of tags with the number of stories
-    #  which have that tag
-    #  does not work
-  def self.tag_counts_broken
-    Tag.select("tags.*, count(taggings.tag_id) as count").
-      # joins(:taggings).group("taggings.tag_id")
-      joins(:taggings).group("tags.id")
-  end
-
-# from the rails cast commemts
+  # returns a list of tags sorted in ascending order by tag name 
+  # with the number of stories which have that tag.  This was originally
+  # based upon the rails cast commemts
   def self.tag_counts
     Tag.select("tags.id, tags.name, count(taggings.tag_id) as count").
-      joins(:taggings).group("taggings.tag_id, tags.id, tags.name")
+      joins(:taggings).group("taggings.tag_id, tags.id, tags.name").order("tags.name ASC")
   end
 
-  
+
   # returns a string with all the tags we have
   # for a particular story
   def tag_list
