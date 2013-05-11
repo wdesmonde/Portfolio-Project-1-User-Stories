@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130217224723) do
+ActiveRecord::Schema.define(:version => 20130505235743) do
 
   create_table "stories", :force => true do |t|
     t.string   "as_a"
@@ -22,6 +22,7 @@ ActiveRecord::Schema.define(:version => 20130217224723) do
     t.text     "notes"
     t.string   "status"
     t.integer  "user_id"
+    t.string   "priority"
   end
 
   create_table "taggings", :force => true do |t|

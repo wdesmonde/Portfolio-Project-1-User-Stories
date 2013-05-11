@@ -7,9 +7,11 @@
   %b Status:
   = @story.status
 %p
+  %b Priority:
+  = @story.priority  
+%p
   %b Tags:
   = raw tag_link_list @story
-//  = raw @story.tags.map { |t| link_to t.name, tag_path(t.name) }.join(', ')
 %p
   %b User:
   = User.find(@story.user_id).username
