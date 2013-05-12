@@ -7,8 +7,9 @@ class StoriesController < ApplicationController
     if params[:tag]
       @stories = Story.tagged_with(params[:tag])
     else
-      @stories = Story.all
+      @stories = Story.all(:order => 'priority, created_at DESC')
     end
+
     # in_progress = Story.where(:status => 'In Progress')
     # @stories = Story.where(:status => 'Not Started')
     # @stories = Story.where(:status => 'Test')
