@@ -18,5 +18,5 @@
           = raw tag_link_list story
         .emphasis
           = " Priority: "
-        = story.priority
+        = Priority.find(story.priority_id).name
 

@@ -8,7 +8,7 @@
   = @story.status
 %p
   %b Priority:
-  = @story.priority  
+  = Priority.find(@story.priority_id).name
 %p
   %b Tags:
   = raw tag_link_list @story

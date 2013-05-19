@@ -1,5 +1,11 @@
 Pp1::Application.routes.draw do
 
+  resources :priorities
+
+
+  resources :statuses
+
+
   get 'tags/:tag', to: 'stories#index', as: :tag
 
   resources :stories do

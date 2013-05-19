@@ -7,7 +7,7 @@ class StoriesController < ApplicationController
     if params[:tag]
       @stories = Story.tagged_with(params[:tag])
     else
-      @stories = Story.all(:order => 'priority, created_at DESC')
+      @stories = Story.all(:order => 'priority_id ASC, created_at DESC')
     end
 
     # in_progress = Story.where(:status => 'In Progress')
@@ -38,6 +38,7 @@ class StoriesController < ApplicationController
   def new
     @story = Story.new
     @story.user_id = current_user.id
+    @priority_default = Priority.where(:name => 'Medium').first.id
 
     respond_to do |format|
       format.html # new.html.erb
@@ -48,6 +49,7 @@ class StoriesController < ApplicationController
   # GET /stories/1/edit
   def edit
     @story = Story.find(params[:id])
+    @priority_default = @story.priority_id
   end
 
   # POST /stories
