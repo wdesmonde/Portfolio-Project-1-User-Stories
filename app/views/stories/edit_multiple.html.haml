@@ -8,7 +8,7 @@
     .field
       = f.label :status
       %br/
-      = f.select :status, options_for_select(["Backlog","Not Started","In Progress", "Test", "Done"]), include_blank: true
+      = f.select :status_id, options_from_collection_for_select(Status.all, :id, :name), include_blank: true
     .field
       = f.label :priority
       %br/
@@ -30,17 +30,16 @@
 
 
 %h2 In Progress
-= render 'list', :stat => 'In Progress', :checkbox => false
+= render 'list', :stat => Status.where(:name => 'In Progress').first.id, :checkbox => false
 %h2 Not Started
-= render 'list', :stat => 'Not Started', :checkbox => false
+= render 'list', :stat => Status.where(:name => 'Not Started').first.id, :checkbox => false
 %h2 Test
-= render 'list', :stat => 'Test', :checkbox => false
+= render 'list', :stat => Status.where(:name => 'Test').first.id, :checkbox => false
 %h2 Backlog
-= render 'list', :stat => 'Backlog', :checkbox => false
+= render 'list', :stat => Status.where(:name => 'Backlog').first.id, :checkbox => false
 %h2 Done
-= render 'list', :stat => 'Done', :checkbox => false
+= render 'list', :stat => Status.where(:name => 'Done').first.id, :checkbox => false
 %br/
-
 
 
 .button

@@ -6,4 +6,4 @@ tmp/
 *.komodoedit
 *.komodoproject
 *.idea
-
+Gemfile.lock

@@ -7,22 +7,22 @@
     = link_to tag.name, tag_path(tag.name), class: css_class
 = form_tag edit_multiple_stories_path, method: :post do
   %h2 In Progress
-  = render 'list', :stat => 'In Progress', :checkbox => true
+  = render 'list', :stat => Status.where(:name => 'In Progress').first.id, :checkbox => true
   = submit_tag "Edit Checked", class: 'submit_button'
   %h2 Not Started
-  = render 'list', :stat => 'Not Started', :checkbox => true
+  = render 'list', :stat => Status.where(:name => 'Not Started').first.id, :checkbox => true
   %br/
   = submit_tag "Edit Checked", :class => 'submit_button'
   %h2 Test
-  = render 'list', :stat => 'Test', :checkbox => true
+  = render 'list', :stat => Status.where(:name => 'Test').first.id, :checkbox => true
   %br/
   = submit_tag "Edit Checked", class: 'submit_button'
   %h2 Backlog
-  = render 'list', :stat => 'Backlog', :checkbox => true
+  = render 'list', :stat => Status.where(:name => 'Backlog').first.id, :checkbox => true
   %br/
   = submit_tag "Edit Checked", :class => 'submit_button'
   %h2 Done
-  = render 'list', :stat => 'Done', :checkbox => true
+  = render 'list', :stat => Status.where(:name => 'Done').first.id, :checkbox => true
   %br/
   = submit_tag "Edit Checked", class: 'submit_button'
 

@@ -23,6 +23,6 @@
       - flash.each do |name, msg|
         = content_tag :div, msg, :id => "flash_#{name}"
       = yield
-    %footer version 7.12
+    %footer version 7.13
     = link_to 'Back to All Stories', stories_path
     = debug(params) if Rails.env.development?

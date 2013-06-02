@@ -5,7 +5,7 @@
   = @story.id
 %p
   %b Status:
-  = @story.status
+  = Status.find(@story.status_id).name
 %p
   %b Priority:
   = Priority.find(@story.priority_id).name

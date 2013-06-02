@@ -33,7 +33,8 @@ class StoriesController < ApplicationController
     @story = Story.new
     @story.user_id = current_user.id
     @priority_default = Priority.where(:name => 'Medium').first.id
-
+    @status_default = Status.where(:name => "Backlog").first.id
+      
     respond_to do |format|
       format.html # new.html.erb
       format.json { render json: @story }
@@ -44,6 +45,7 @@ class StoriesController < ApplicationController
   def edit
     @story = Story.find(params[:id])
     @priority_default = @story.priority_id
+    @status_default = @story.status_id
   end
 
   # POST /stories
