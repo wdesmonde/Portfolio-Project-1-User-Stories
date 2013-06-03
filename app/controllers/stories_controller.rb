@@ -4,11 +4,15 @@ class StoriesController < ApplicationController
   # GET /stories
   # GET /stories.json
   def index	
+    # TODO: Sort by priority order not priority id
     if params[:tag]
       @stories = Story.tagged_with(params[:tag]).order('priority_id ASC, created_at DESC')
     else
       @stories = Story.all(:order => 'priority_id ASC, created_at DESC')
     end
+
+    # TODO: Change the "order" field to a valid name and sort by that.
+    @stati = Status.all(:order => 'id ASC')
 
     respond_to do |format|
       format.html # index.html.erb
@@ -33,7 +37,8 @@ class StoriesController < ApplicationController
     @story = Story.new
     @story.user_id = current_user.id
     @priority_default = Priority.where(:name => 'Medium').first.id
-
+    @status_default = Status.where(:name => "Backlog").first.id
+      
     respond_to do |format|
       format.html # new.html.erb
       format.json { render json: @story }
@@ -44,6 +49,7 @@ class StoriesController < ApplicationController
   def edit
     @story = Story.find(params[:id])
     @priority_default = @story.priority_id
+    @status_default = @story.status_id
   end
 
   # POST /stories
@@ -82,6 +88,8 @@ class StoriesController < ApplicationController
     if params[:story_ids]
       @stories = Story.find(params[:story_ids])
       @users = User.all
+      # TODO: Change the "order" field to a valid name and sort by that.
+      @stati = Status.all(:order => 'id ASC')
     else
       redirect_to :stories
     end

@@ -4,7 +4,7 @@
   - @stories.each do |story|
     - story_desc = "As a #{story.as_a}, I want to #{story.i_want_to} so that #{story.so_that}."
     - story_link = link_to story_desc, story
-    - if (story.status == stat)
+    - if (story.status_id == stat)
       %li
         - if (checkbox == true)
           = check_box_tag "story_ids[]", story.id

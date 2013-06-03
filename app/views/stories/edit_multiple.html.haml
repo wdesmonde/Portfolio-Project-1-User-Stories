@@ -8,7 +8,7 @@
     .field
       = f.label :status
       %br/
-      = f.select :status, options_for_select(["Backlog","Not Started","In Progress", "Test", "Done"]), include_blank: true
+      = f.select :status_id, options_from_collection_for_select(Status.all, :id, :name), include_blank: true
     .field
       = f.label :priority
       %br/
@@ -28,19 +28,11 @@
     .actions
       = submit_tag "Update All These Stories", class: 'submit_button'
 
-
-%h2 In Progress
-= render 'list', :stat => 'In Progress', :checkbox => false
-%h2 Not Started
-= render 'list', :stat => 'Not Started', :checkbox => false
-%h2 Test
-= render 'list', :stat => 'Test', :checkbox => false
-%h2 Backlog
-= render 'list', :stat => 'Backlog', :checkbox => false
-%h2 Done
-= render 'list', :stat => 'Done', :checkbox => false
+- @stati.each do |status|
+  %h2 
+    = status.name
+  = render 'list', :stat => status.id, :checkbox => false  
 %br/
-
 
 
 .button

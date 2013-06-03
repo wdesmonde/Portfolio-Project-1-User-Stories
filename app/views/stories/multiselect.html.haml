@@ -1,15 +1,10 @@
 %h1
   Selected User Stories
-%h2 In Progress
-= render 'list', :stat => 'In Progress'
-%h2 Not Started
-= render 'list', :stat => 'Not Started'
-%h2 Test
-= render 'list', :stat => 'Test'
-%h2 Backlog
-= render 'list', :stat => 'Backlog'
-%h2 Done
-= render 'list', :stat => 'Done'
+- @stati.each do |status|
+  %h2 
+    = status.name
+  = render 'list', :stat => status.id, :checkbox => false  
+
 %br/
 
 .button

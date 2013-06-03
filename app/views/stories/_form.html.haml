@@ -10,7 +10,7 @@
   .field
     = f.label :status
     %br/
-    = f.select :status, options_for_select(["Backlog","Not Started","In Progress", "Test", "Done"],[@story.status])
+    = f.select :status_id, options_from_collection_for_select(Status.all, :id, :name, @status_default)
   .field
     = f.label :priority
     %br/
