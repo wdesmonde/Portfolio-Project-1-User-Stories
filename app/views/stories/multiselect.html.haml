@@ -1,15 +1,10 @@
 %h1
   Selected User Stories
-%h2 In Progress
-= render 'list', :stat => Status.where(:name => 'In Progress').first.id, :checkbox => false
-%h2 Not Started
-= render 'list', :stat => Status.where(:name => 'Not Started').first.id, :checkbox => false
-%h2 Test
-= render 'list', :stat => Status.where(:name => 'Test').first.id, :checkbox => false
-%h2 Backlog
-= render 'list', :stat => Status.where(:name => 'Backlog').first.id, :checkbox => false
-%h2 Done
-= render 'list', :stat => Status.where(:name => 'Done').first.id, :checkbox => false
+- @stati.each do |status|
+  %h2 
+    = status.name
+  = render 'list', :stat => status.id, :checkbox => false  
+
 %br/
 
 .button
