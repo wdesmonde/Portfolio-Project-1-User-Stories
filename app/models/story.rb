@@ -5,7 +5,7 @@ class Story < ActiveRecord::Base
   attr_writer :tags_to_add, :tags_to_remove
   
   validates :status, :presence => true
-  validates :priority, :presence => true #, :inclusion => { :in => %w(High Medium Low) }
+  validates :priority_id, :presence => true #, :inclusion => { :in => %w(High Medium Low) }
   validates :as_a, :presence => true
   validates :i_want_to, :presence => true
   validates :so_that, :presence => true

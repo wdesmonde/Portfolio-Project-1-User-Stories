@@ -5,16 +5,10 @@ class StoriesController < ApplicationController
   # GET /stories.json
   def index	
     if params[:tag]
-      @stories = Story.tagged_with(params[:tag])
+      @stories = Story.tagged_with(params[:tag]).order('priority_id ASC, created_at DESC')
     else
-      @stories = Story.all(:order => 'priority, created_at DESC')
+      @stories = Story.all(:order => 'priority_id ASC, created_at DESC')
     end
-
-    # in_progress = Story.where(:status => 'In Progress')
-    # @stories = Story.where(:status => 'Not Started')
-    # @stories = Story.where(:status => 'Test')
-    # @stories = Story.where(:status => 'Backlog')
-    # @stories = Story.where(:status => 'Done')
 
     respond_to do |format|
       format.html # index.html.erb
@@ -38,6 +32,7 @@ class StoriesController < ApplicationController
   def new
     @story = Story.new
     @story.user_id = current_user.id
+    @priority_default = Priority.where(:name => 'Medium').first.id
 
     respond_to do |format|
       format.html # new.html.erb
@@ -48,6 +43,7 @@ class StoriesController < ApplicationController
   # GET /stories/1/edit
   def edit
     @story = Story.find(params[:id])
+    @priority_default = @story.priority_id
   end
 
   # POST /stories
@@ -93,6 +89,9 @@ class StoriesController < ApplicationController
   
   def update_multiple
     @stories = Story.find(params[:story_ids])
+    # the view ensures that we have numbers coming back instead of text for the priorities
+    #    TODO: for status
+    
     @tags_to_add = params[:tags_to_add]
     @tags_to_remove = params[:tags_to_remove]
     @stories.reject! do |story|

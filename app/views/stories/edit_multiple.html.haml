@@ -12,7 +12,7 @@
     .field
       = f.label :priority
       %br/
-      = f.select :priority, options_for_select(["High", "Medium", "Low"]), include_blank: true  
+      = f.select :priority_id, options_from_collection_for_select(Priority.all, :id, :name), include_blank: true  
     .field
       = f.label :tags_to_remove, "Tags to Remove (separated by commas)"
       %br/

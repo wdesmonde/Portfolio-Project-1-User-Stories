@@ -14,7 +14,7 @@
   .field
     = f.label :priority
     %br/
-    = f.select :priority, options_for_select(["High", "Medium", "Low"],[options_default(@story.priority, "Medium")]) 
+    = f.select :priority_id, options_from_collection_for_select(Priority.all, :id, :name, @priority_default)
   .field
     = f.label :tag_list, "Tags (separated by commas)"
     %br/
