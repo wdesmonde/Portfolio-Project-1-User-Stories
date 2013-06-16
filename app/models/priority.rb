@@ -1,3 +1,5 @@
 class Priority < ActiveRecord::Base
-  attr_accessible :id, :name, :order
+  has_many :stories
+  # NOTE: has_many :tasks, :order => 'priority DESC'
+  attr_accessible :id, :name, :priority_order
 end

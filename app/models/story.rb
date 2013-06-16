@@ -2,6 +2,7 @@ class Story < ActiveRecord::Base
   belongs_to :user
   has_many :taggings
   has_many :tags, :through => :taggings
+  has_one :priority
   attr_writer :tags_to_add, :tags_to_remove
   
   validates :status_id, :presence => true
