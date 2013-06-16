@@ -31,8 +31,8 @@ ActiveRecord::Schema.define(:version => 20130609223852) do
     t.string   "as_a"
     t.text     "i_want_to"
     t.text     "so_that"
-    t.datetime "created_at"
-    t.datetime "updated_at"
+    t.datetime "created_at",  :null => false
+    t.datetime "updated_at",  :null => false
     t.text     "notes"
     t.string   "status"
     t.integer  "user_id"
@@ -62,8 +62,8 @@ ActiveRecord::Schema.define(:version => 20130609223852) do
     t.string   "email"
     t.string   "crypted_password"
     t.string   "salt"
-    t.datetime "created_at"
-    t.datetime "updated_at"
+    t.datetime "created_at",                   :null => false
+    t.datetime "updated_at",                   :null => false
     t.string   "remember_me_token"
     t.datetime "remember_me_token_expires_at"
   end
