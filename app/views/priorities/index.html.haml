@@ -3,7 +3,7 @@
 %table
   %tr
     %th Name
-    %th Order
+    %th Priority Order
     %th
     %th
     %th
@@ -11,7 +11,7 @@
   - @priorities.each do |priority|
     %tr
       %td= priority.name
-      %td= priority.order
+      %td= priority.priority_order
       %td= link_to 'Show', priority
       %td= link_to 'Edit', edit_priority_path(priority)
       %td= link_to 'Destroy', priority, :method => :delete, :data => { :confirm => 'Are you sure?' }
