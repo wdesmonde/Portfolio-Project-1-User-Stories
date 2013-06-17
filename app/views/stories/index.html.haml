@@ -6,12 +6,6 @@
   - tag_cloud Story.tag_counts, %w{s m l} do |tag, css_class|
     = link_to tag.name, tag_path(tag.name), class: css_class
 = form_tag edit_multiple_stories_path, method: :post do
-
-  - @stati.each do |status|
-    %h2 
-      = status.name
-    = render 'list', :stat => status.id, :checkbox => true  
-    = submit_tag "Edit Checked", class: 'submit_button' 
-
+  = render 'list', :checkbox => true
 .button
   = link_to 'New Story', new_story_path

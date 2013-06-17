@@ -4,34 +4,20 @@ class StoriesController < ApplicationController
   # GET /stories
   # GET /stories.json
   def index
-    # TODO: Sort by priority order not priority id
-
-    # This is the select we want ...
-    #
-    # select stories.as_a, stories.i_want_to, statuses.name as "Status", priorities.name as "Priority", stories.created_at
-    # from stories, priorities, statuses
-    # where stories.priority_id = priorities.id and stories.status_id = statuses.id
-    # order by statuses.order ASC, priorities.order ASC, stories.created_at DESC
-
-    # @result = DogTag.find(:all, :joins => :dog, :order => 'dogs.name')
-    #  : SELECT "stories".* FROM "stories" INNER JOIN "priorities" ON "priorities"."story_id" = "stories"."id"
-    # ORDER BY priority.priority_order ASC, created_at DESC
+    ### TODO:  fix the if here
     if params[:tag]
       @stories = Story.tagged_with(params[:tag]).order('priority_id ASC, created_at DESC')
     else
-                     # day.where(:user_id => current_user.id).includes(:tasks).order('tasks.priority')
-      puts "LOOKIE HERE"
-      #@stories = Story.all(:joins => :priority, :order => 'priorities.priority_order ASC, created_at DESC')
-      #@stories = Story.all(:joins => :priority, :order => 'stories.priority_order ASC, created_at DESC')
-      #@stories = Priority.all(:joins => :stories, :order => 'priority_order ASC')
-      #@stories = Story.all(:order => 'created_at DESC').include(:priorities).order('priorities.priority_order')
-      #@stories = Story.all.join('priorities').where(priority_id == priority.id).order(priority.priority_order)
-      #@stories = Story.find(:all, :joins => "left join priorities on stories.priority_id = priorities.id", :order => "priorities.priority_order")
-      @stories = Story.all(:joins => "left join priorities on stories.priority_id = priorities.id", :order => "priorities.priority_order")
-    end
+      @stories = Story.order("statuses.status_order, priorities.priority_order, 
+        created_at DESC").
+          joins(:status, :priority).
+          select('stories.*, statuses.status_order as status_order, 
+            statuses.name as status_name,
+            priorities.priority_order as priority_order,
+            priorities.name as priority_name')
+            
 
-    # TODO: Change the "order" field to a valid name and sort by that.
-    @stati = Status.all(:order => 'id ASC')
+    end
 
     respond_to do |format|
       format.html # index.html.erb

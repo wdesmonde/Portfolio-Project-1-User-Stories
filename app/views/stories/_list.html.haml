@@ -1,22 +1,31 @@
 // this is _list.html.haml
 //= form_tag edit_multiple_stories_path, method: :post do
 %ul
+  - prev_stat = "None"
   - @stories.each do |story|
     - story_desc = "As a #{story.as_a}, I want to #{story.i_want_to} so that #{story.so_that}."
     - story_link = link_to story_desc, story
-    - if (story.status_id == stat)
-      %li
-        - if (checkbox == true)
-          = check_box_tag "story_ids[]", story.id
-        = story_link
-        .emphasis
-          = "Story #"
-        = story.id
-        .emphasis
-          = " Tags: "
-        .links
-          = raw tag_link_list story
-        .emphasis
-          = " Priority: "
-        = Priority.find(story.priority_id).name
-
+ 
+    
+    // what's the status of the previous one compared to this one
+    - if prev_stat != story.status_id
+      - if prev_stat != "None"
+        = submit_tag "Edit Checked", class: 'submit_button' 
+      %h2 
+        = story.status_name
+    - prev_stat = story.status_id
+    %li
+      - if (checkbox == true)
+        = check_box_tag "story_ids[]", story.id
+      = story_link
+      .emphasis
+        = "Story #"
+      = story.id
+      .emphasis
+        = " Tags: "
+      .links
+        = raw tag_link_list story
+      .emphasis
+        = " Priority: "
+      = story.priority_name
+= submit_tag "Edit Checked", class: 'submit_button' 
