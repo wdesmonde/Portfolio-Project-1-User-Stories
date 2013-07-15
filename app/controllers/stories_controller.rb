@@ -4,9 +4,15 @@ class StoriesController < ApplicationController
   # GET /stories
   # GET /stories.json
   def index
-    ### TODO:  fix the if here
     if params[:tag]
-      @stories = Story.tagged_with(params[:tag]).order('priority_id ASC, created_at DESC')
+
+      @stories = Story.tagged_with(params[:tag]).order("statuses.status_order, priorities.priority_order, 
+        created_at DESC").
+          joins(:status, :priority).
+          select('stories.*, statuses.status_order as status_order, 
+            statuses.name as status_name,
+            priorities.priority_order as priority_order,
+            priorities.name as priority_name')
     else
       @stories = Story.order("statuses.status_order, priorities.priority_order, 
         created_at DESC").
@@ -91,17 +97,34 @@ class StoriesController < ApplicationController
 
   def edit_multiple
     if params[:story_ids]
-      @stories = Story.find(params[:story_ids])
+      #@stories = Story.find(params[:story_ids])
+      @stories = Story.where(id: params[:story_ids]).order("statuses.status_order, priorities.priority_order, 
+        created_at DESC").
+          joins(:status, :priority).
+          select('stories.*, statuses.status_order as status_order, 
+            statuses.name as status_name,
+            priorities.priority_order as priority_order,
+            priorities.name as priority_name')
+            
+
       @users = User.all
       # TODO: Change the "order" field to a valid name and sort by that.
-      @stati = Status.all(:order => 'id ASC')
+      #@stati = Status.all(:status_order => 'id ASC')
     else
       redirect_to :stories
     end
   end
   
   def update_multiple
-    @stories = Story.find(params[:story_ids])
+    #@stories = Story.find(params[:story_ids])
+    @stories = Story.where(id: params[:story_ids]).order("statuses.status_order, priorities.priority_order, 
+        created_at DESC").
+          joins(:status, :priority).
+          select('stories.*, statuses.status_order as status_order, 
+            statuses.name as status_name,
+            priorities.priority_order as priority_order,
+            priorities.name as priority_name')
+            
     # the view ensures that we have numbers coming back instead of text for the priorities
     #    TODO: for status
     

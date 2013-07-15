@@ -28,10 +28,7 @@
     .actions
       = submit_tag "Update All These Stories", class: 'submit_button'
 
-- @stati.each do |status|
-  %h2 
-    = status.name
-  = render 'list', :stat => status.id, :checkbox => false  
+  = render 'list', :checkbox => false  
 %br/
 
 
