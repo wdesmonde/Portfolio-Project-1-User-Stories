@@ -6,15 +6,10 @@ class StoriesController < ApplicationController
   def index
     ### TODO:  fix the if here
     if params[:tag]
-      @stories = Story.tagged_with(params[:tag]).order('priority_id ASC, created_at DESC')
+      # @stories = Story.tagged_with(params[:tag]).order('priority_id ASC, created_at DESC')
+      @stories = Story.properly_ordered.tagged_with(params[:tag])
     else
-      @stories = Story.order("statuses.status_order, priorities.priority_order, 
-        created_at DESC").
-          joins(:status, :priority).
-          select('stories.*, statuses.status_order as status_order, 
-            statuses.name as status_name,
-            priorities.priority_order as priority_order,
-            priorities.name as priority_name')
+      @stories = Story.properly_ordered
             
 
     end
@@ -91,17 +86,22 @@ class StoriesController < ApplicationController
 
   def edit_multiple
     if params[:story_ids]
-      @stories = Story.find(params[:story_ids])
+      # @stories = Story.find(params[:story_ids]).properly_ordered
+      # @stories = Story.properly_ordered.find([:story_ids])
+      # @stories = Story.properly_ordered.where(id member_of params[:story_ids])
+      # @stories = Story.properly_ordered.where(:id => params[:story_ids])
+      @stories = Story.where(:id => params[:story_ids]).properly_ordered
       @users = User.all
       # TODO: Change the "order" field to a valid name and sort by that.
-      @stati = Status.all(:order => 'id ASC')
+      # TODO remove @stati = Status.all(:order => 'id ASC')
     else
       redirect_to :stories
     end
   end
   
   def update_multiple
-    @stories = Story.find(params[:story_ids])
+    # @stories = Story.find(params[:story_ids])
+    @stories = Story.where(:id => params[:story_ids]).properly_ordered
     # the view ensures that we have numbers coming back instead of text for the priorities
     #    TODO: for status
     
