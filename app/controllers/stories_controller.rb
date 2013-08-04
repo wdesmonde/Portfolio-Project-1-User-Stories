@@ -14,13 +14,7 @@ class StoriesController < ApplicationController
             priorities.priority_order as priority_order,
             priorities.name as priority_name')
     else
-      @stories = Story.order("statuses.status_order, priorities.priority_order, 
-        created_at DESC").
-          joins(:status, :priority).
-          select('stories.*, statuses.status_order as status_order, 
-            statuses.name as status_name,
-            priorities.priority_order as priority_order,
-            priorities.name as priority_name')
+      @stories = Story.properly_ordered
             
 
     end

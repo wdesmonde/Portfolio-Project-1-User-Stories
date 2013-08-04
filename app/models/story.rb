@@ -12,8 +12,34 @@ class Story < ActiveRecord::Base
   validates :i_want_to, :presence => true
   validates :so_that, :presence => true
   validates :user_id, :presence => true
-  
-  # returns the stories which have tags of a given name
+
+  scope :properly_ordered, order("statuses.status_order, priorities.priority_order,
+                             created_at DESC").
+                             joins(:status, :priority).
+                               select('stories.*, statuses.status_order as status_order,
+                                 statuses.name as status_name,
+                                 priorities.priority_order as priority_order,
+                                 priorities.name as priority_name')
+  # TODO: Figure out how to do this without running into problems with params
+  #       not being undefined at runtime.
+  # scope :all_stories, properly_ordered
+  # scope :tagged_stories, properly_ordered.tagged_with(params[:tag])
+  # scope :selected_stories, where(:id => params[:story_ids]).properly_ordered
+  scope :tagged_storiesX, properly_ordered.where()
+
+  scope :tagged_stories, lambda { |*tag|
+    Tag
+    if year.empty? || year.first.nil?
+      { :joins => :semester, :conditions => ["year = #{CURRENT_SEMESTER}"]}
+    else
+      { :joins => :semester, :conditions => ["year = #{year}"]}
+    end
+  }
+
+end
+
+
+# returns the stories which have tags of a given name
   def self.tagged_with(name)
     Tag.find_by_name!(name).stories
   end
