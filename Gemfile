@@ -36,6 +36,7 @@ group :development do
   gem 'hpricot'
   gem 'ruby_parser'
   gem 'html2haml'
+  gem "bullet"
 end
 
 

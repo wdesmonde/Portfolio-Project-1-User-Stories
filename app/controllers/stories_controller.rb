@@ -7,7 +7,9 @@ class StoriesController < ApplicationController
     ### TODO:  fix the if here
     if params[:tag]
       # @stories = Story.tagged_with(params[:tag]).order('priority_id ASC, created_at DESC')
-      @stories = Story.properly_ordered.tagged_with(params[:tag])
+      @stories = Story.tagged_with(params[:tag]).properly_ordered
+      # @stories = Story.tagged
+      # @stories = Story.properly_ordered.tagged_with(params[:tag])
     else
       @stories = Story.properly_ordered
             
