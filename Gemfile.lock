@@ -32,6 +32,8 @@ GEM
     arel (3.0.2)
     bcrypt-ruby (3.0.1)
     builder (3.0.4)
+    bullet (4.6.0)
+      uniform_notifier
     coffee-rails (3.2.2)
       coffee-script (>= 2.2.0)
       railties (~> 3.2.0)
@@ -141,11 +143,13 @@ GEM
     uglifier (2.0.1)
       execjs (>= 0.3.0)
       multi_json (~> 1.0, >= 1.0.2)
+    uniform_notifier (1.2.0)
 
 PLATFORMS
   ruby
 
 DEPENDENCIES
+  bullet
   coffee-rails (~> 3.2.1)
   execjs
   haml-rails
