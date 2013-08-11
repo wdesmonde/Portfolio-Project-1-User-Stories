@@ -3,9 +3,13 @@ class StoriesController < ApplicationController
   
   # GET /stories
   # GET /stories.json
+  # note:  tagged_with is defined in story.rb
   def index
     if params[:tag]
+      @stories = Story.tagged_with(params[:tag]).properly_ordered
+      puts "HELLO WORLD!!!"
 
+=begin
       @stories = Story.tagged_with(params[:tag]).order("statuses.status_order, priorities.priority_order, 
         created_at DESC").
           joins(:status, :priority).
@@ -13,6 +17,7 @@ class StoriesController < ApplicationController
             statuses.name as status_name,
             priorities.priority_order as priority_order,
             priorities.name as priority_name')
+=end
     else
       @stories = Story.properly_ordered
             
