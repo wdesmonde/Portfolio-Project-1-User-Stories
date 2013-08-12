@@ -31,7 +31,12 @@ end
 
 gem 'jquery-rails'
 gem 'haml-rails'
-
+gem "rspec-rails", :group => [:test, :development]
+group :test do
+  gem "factory_girl_rails", "~> 4.0"
+  gem "capybara"
+  gem "guard-rspec"
+end
 group :development do
   gem 'hpricot'
   gem 'ruby_parser'
