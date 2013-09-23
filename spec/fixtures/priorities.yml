@@ -1,0 +1,12 @@
+high_priority:
+  name: High
+  priority_order: 10
+
+medium_priority:
+  name: Medium
+  priority_order: 20
+
+low_priority:
+  name: Low
+  priority_order: 30
+

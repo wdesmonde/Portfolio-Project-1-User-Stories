@@ -25,7 +25,7 @@ puts "smoke_tests_spec-DEBUG:Capybara.default_selector=#{Capybara.default_select
 #puts Capybara.default_selector
 
 describe "New Story Tests" do
-
+  fixtures :all
   before(:each) do
     @user = {
       :name =>   "Some Won",
@@ -59,7 +59,7 @@ describe "New Story Tests" do
     describe "create new story" do
       it "should create a new story with only valid text fields" do
         lambda do
-          save_and_open_page
+          #save_and_open_page
           first(:link, "New Story").click
           fill_in('story_tag_list', :with => @new_story[:tags])
           fill_in('story_as_a', :with => @new_story[:as_a])

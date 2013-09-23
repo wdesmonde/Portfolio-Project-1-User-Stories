@@ -1,0 +1,19 @@
+in_progress_status:
+  name: 'In Progress'
+  status_order: 10
+
+not_started_status:
+  name: 'Not Started'
+  status_order: 20
+
+test_status:
+  name: 'Test'
+  status_order: 30
+
+backlog_status:
+  name: 'Backlog'
+  status_order: 40
+
+done_status:
+  name: 'Done'
+  status_order: 50

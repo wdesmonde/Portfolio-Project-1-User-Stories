@@ -8,4 +8,5 @@ FactoryGirl.define do
     password "foolishbar"
     password_confirmation  "foolishbar"
   end
+
 end
